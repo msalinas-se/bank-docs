@@ -1,77 +1,97 @@
 <mxfile host="drawio">
   <diagram id="arquitectura" name="Arquitectura">
-    <mxGraphModel dx="1000" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="900" pageHeight="620" math="0" shadow="0">
+    <mxGraphModel dx="1000" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="760" pageHeight="620" math="0" shadow="0">
       <root>
         <mxCell id="0"/>
         <mxCell id="1" parent="0"/>
-        <mxCell id="title" value="Sistema bancario - Parte 1" style="text;html=1;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+        <mxCell id="title" value="Sistema bancario - Parte 2" style="text;html=1;fontSize=16;fontStyle=1;" vertex="1" parent="1">
           <mxGeometry x="40" y="20" width="300" height="30" as="geometry"/>
         </mxCell>
         <mxCell id="postman" value="Postman" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="40" y="260" width="110" height="50" as="geometry"/>
+          <mxGeometry x="20" y="260" width="100" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="gateway" value="api-gateway&lt;br&gt;8080" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="170" y="255" width="130" height="60" as="geometry"/>
         </mxCell>
         <mxCell id="account" value="account-service&lt;br&gt;8082" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
-          <mxGeometry x="250" y="120" width="160" height="60" as="geometry"/>
+          <mxGeometry x="360" y="120" width="150" height="60" as="geometry"/>
         </mxCell>
         <mxCell id="customer" value="customer-service&lt;br&gt;8081" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
-          <mxGeometry x="250" y="255" width="160" height="60" as="geometry"/>
+          <mxGeometry x="360" y="255" width="150" height="60" as="geometry"/>
         </mxCell>
         <mxCell id="credit" value="credit-service&lt;br&gt;8083" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
-          <mxGeometry x="250" y="390" width="160" height="60" as="geometry"/>
+          <mxGeometry x="360" y="390" width="150" height="60" as="geometry"/>
         </mxCell>
         <mxCell id="accountDb" value="account_db" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;size=10;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
-          <mxGeometry x="500" y="115" width="100" height="70" as="geometry"/>
+          <mxGeometry x="600" y="115" width="100" height="70" as="geometry"/>
         </mxCell>
         <mxCell id="customerDb" value="customer_db" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;size=10;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
-          <mxGeometry x="500" y="250" width="100" height="70" as="geometry"/>
+          <mxGeometry x="600" y="250" width="100" height="70" as="geometry"/>
         </mxCell>
         <mxCell id="creditDb" value="credit_db" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;size=10;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
-          <mxGeometry x="500" y="385" width="100" height="70" as="geometry"/>
+          <mxGeometry x="600" y="385" width="100" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="eureka" value="eureka-server&lt;br&gt;8761" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="170" y="520" width="130" height="60" as="geometry"/>
         </mxCell>
         <mxCell id="config" value="config-server&lt;br&gt;8888" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
-          <mxGeometry x="260" y="510" width="140" height="60" as="geometry"/>
+          <mxGeometry x="365" y="520" width="140" height="60" as="geometry"/>
         </mxCell>
         <mxCell id="repo" value="config-repo" style="shape=note;whiteSpace=wrap;html=1;size=14;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
-          <mxGeometry x="500" y="510" width="100" height="60" as="geometry"/>
+          <mxGeometry x="600" y="520" width="100" height="60" as="geometry"/>
         </mxCell>
-        <mxCell id="e1" value="" style="html=1;endArrow=block;exitX=1;exitY=0.25;entryX=0;entryY=0.5;" edge="1" parent="1" source="postman" target="account">
+        <mxCell id="e1" value="" style="html=1;endArrow=block;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="postman" target="gateway">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e2" value="" style="html=1;endArrow=block;exitX=1;exitY=0.25;entryX=0;entryY=0.5;" edge="1" parent="1" source="gateway" target="account">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="200" y="272"/>
-              <mxPoint x="200" y="150"/>
+              <mxPoint x="330" y="270"/>
+              <mxPoint x="330" y="150"/>
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="e2" value="" style="html=1;endArrow=block;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="postman" target="customer">
+        <mxCell id="e3" value="" style="html=1;endArrow=block;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="gateway" target="customer">
           <mxGeometry relative="1" as="geometry"/>
         </mxCell>
-        <mxCell id="e3" value="" style="html=1;endArrow=block;exitX=1;exitY=0.75;entryX=0;entryY=0.5;" edge="1" parent="1" source="postman" target="credit">
+        <mxCell id="e4" value="" style="html=1;endArrow=block;exitX=1;exitY=0.75;entryX=0;entryY=0.5;" edge="1" parent="1" source="gateway" target="credit">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="200" y="297"/>
-              <mxPoint x="200" y="420"/>
+              <mxPoint x="330" y="300"/>
+              <mxPoint x="330" y="420"/>
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="e4" value="REST" style="html=1;endArrow=block;dashed=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="account" target="customer">
+        <mxCell id="e5" value="REST" style="html=1;endArrow=block;dashed=1;exitX=0.35;exitY=1;entryX=0.35;entryY=0;" edge="1" parent="1" source="account" target="customer">
           <mxGeometry relative="1" as="geometry"/>
         </mxCell>
-        <mxCell id="e5" value="REST" style="html=1;endArrow=block;dashed=1;exitX=0.5;exitY=0;entryX=0.5;entryY=1;" edge="1" parent="1" source="credit" target="customer">
+        <mxCell id="e6" value="REST" style="html=1;endArrow=block;dashed=1;exitX=0.35;exitY=0;entryX=0.35;entryY=1;" edge="1" parent="1" source="credit" target="customer">
           <mxGeometry relative="1" as="geometry"/>
         </mxCell>
-        <mxCell id="e6" value="" style="html=1;endArrow=block;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="account" target="accountDb">
+        <mxCell id="e7" value="REST" style="html=1;endArrow=block;dashed=1;labelBackgroundColor=#ffffff;exitX=1;exitY=0.85;entryX=1;entryY=0.15;" edge="1" parent="1" source="account" target="credit">
+          <mxGeometry x="-0.45" relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="545" y="171"/>
+              <mxPoint x="545" y="399"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e8" value="" style="html=1;endArrow=block;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="account" target="accountDb">
           <mxGeometry relative="1" as="geometry"/>
         </mxCell>
-        <mxCell id="e7" value="" style="html=1;endArrow=block;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="customer" target="customerDb">
+        <mxCell id="e9" value="" style="html=1;endArrow=block;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="customer" target="customerDb">
           <mxGeometry relative="1" as="geometry"/>
         </mxCell>
-        <mxCell id="e8" value="" style="html=1;endArrow=block;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="credit" target="creditDb">
+        <mxCell id="e10" value="" style="html=1;endArrow=block;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="credit" target="creditDb">
           <mxGeometry relative="1" as="geometry"/>
         </mxCell>
-        <mxCell id="e9" value="config" style="html=1;endArrow=block;dashed=1;exitX=0.5;exitY=0;entryX=0.5;entryY=1;" edge="1" parent="1" source="config" target="credit">
+        <mxCell id="e11" value="discovery" style="html=1;endArrow=block;dashed=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="gateway" target="eureka">
           <mxGeometry relative="1" as="geometry"/>
         </mxCell>
-        <mxCell id="e10" value="" style="html=1;endArrow=block;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="config" target="repo">
+        <mxCell id="e12" value="config" style="html=1;endArrow=block;dashed=1;exitX=0.5;exitY=0;entryX=0.5;entryY=1;" edge="1" parent="1" source="config" target="credit">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e13" value="" style="html=1;endArrow=block;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="config" target="repo">
           <mxGeometry relative="1" as="geometry"/>
         </mxCell>
       </root>

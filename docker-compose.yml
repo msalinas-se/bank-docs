@@ -1,0 +1,47 @@
+services:
+  mongo:
+    image: mongo:6
+
+  config-server:
+    build: ../config-server
+    ports:
+      - "8888:8888"
+    environment:
+      SPRING_PROFILES_ACTIVE: native
+      SPRING_CLOUD_CONFIG_SERVER_NATIVE_SEARCH_LOCATIONS: file:///config-repo
+    volumes:
+      - ../config-repo:/config-repo
+
+  eureka-server:
+    build: ../eureka-server
+    ports:
+      - "8761:8761"
+
+  customer-service:
+    build: ../customer-service
+    environment: &service-env
+      CONFIG_SERVER_URL: http://config-server:8888
+      EUREKA_HOST: eureka-server
+      MONGO_HOST: mongo
+    depends_on: [config-server, eureka-server, mongo]
+    restart: on-failure
+
+  credit-service:
+    build: ../credit-service
+    environment: *service-env
+    depends_on: [config-server, eureka-server, mongo]
+    restart: on-failure
+
+  account-service:
+    build: ../account-service
+    environment: *service-env
+    depends_on: [config-server, eureka-server, mongo]
+    restart: on-failure
+
+  api-gateway:
+    build: ../api-gateway
+    ports:
+      - "8080:8080"
+    environment: *service-env
+    depends_on: [config-server, eureka-server]
+    restart: on-failure
